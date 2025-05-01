@@ -1,0 +1,50 @@
+<button class="btn btn-success add-user-btn" (click)="onAddNewUser()">
+  Додати нового користувача
+</button>
+
+<div class="search-container">
+    <label for="search">Пошук:</label>
+    <input type="text" id="search" [(ngModel)]="searchTerm" (input)="onSearchChange()" placeholder="Ім'я, Email, Роль...">
+</div>
+
+<div class="table-responsive"> <table *ngIf="filteredUsers.length > 0; else noUsersFound">
+      <thead>
+          <tr>
+              <th>Ім’я</th>
+              <th>Email</th>
+              <th>Роль</th>
+              <th>Дата створення</th>
+              <th class="actions-column">Дії</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let user of filteredUsers">
+              <td data-label="Ім’я">{{ user.name }}</td>
+              <td data-label="Email">{{ user.email }}</td>
+              <td data-label="Роль">{{ user.role }}</td>
+              <td data-label="Дата створення">{{ user.createdAt | date:'dd.MM.yyyy HH:mm' }}</td>
+              <td>
+                  <button class="btn btn-secondary btn-sm" (click)="onEditUser(user)">Редагувати</button>
+                  <button class="btn btn-danger btn-sm" (click)="onDeleteUser(user.id)">Видалити</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<ng-template #noUsersFound>
+  <div class="no-users-message">
+      <p *ngIf="users.length > 0 && filteredUsers.length === 0">Користувачів не знайдено за вашим запитом.</p>
+      <p *ngIf="users.length === 0">Список користувачів порожній.</p>
+  </div>
+</ng-template>
+
+
+<div class="form-overlay" *ngIf="showForm">
+    <div class="form-container"> <app-user-form
+            [userToEdit]="userToEdit"
+            (formSubmit)="handleFormSubmit($event)"
+            (formCancel)="handleFormCancel()">
+        </app-user-form>
+    </div>
+</div>

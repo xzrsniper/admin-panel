@@ -1,0 +1,37 @@
+<h3>{{ isEditMode ? 'Редагувати користувача' : 'Додати нового користувача' }}</h3>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Ім'я:</label>
+    <input type="text" id="name" formControlName="name" placeholder="Повне ім'я">
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="error-message">
+      <small *ngIf="name?.errors?.['required']">Ім'я є обов'язковим.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" placeholder="example@mail.com">
+    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="error-message">
+      <small *ngIf="email?.errors?.['required']">Email є обов'язковим.</small>
+      <small *ngIf="email?.errors?.['email']">Невірний формат email.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="role">Роль:</label>
+    <select id="role" formControlName="role">
+      <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+    </select>
+    <div *ngIf="role?.invalid && (role?.dirty || role?.touched)" class="error-message">
+      <small *ngIf="role?.errors?.['required']">Роль є обов'язковою.</small>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
+      {{ isEditMode ? 'Зберегти зміни' : 'Додати користувача' }}
+    </button>
+    <button type="button" class="btn btn-light" (click)="onCancel()">Скасувати</button>
+  </div>
+</form>

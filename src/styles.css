@@ -1,1 +1,175 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --border-color: #dee2e6;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --input-bg: #fff;
+  --input-border-color: #ced4da;
+}
+
+body {
+  font-family: var(--font-family-base);
+  margin: 0;
+  padding: 0; /* Забираємо відступи тіла */
+  background-color: #e9ecef; /* Тло для всієї сторінки */
+  color: var(--dark-color);
+  line-height: 1.5;
+}
+
+/* Додаємо padding через контейнер */
+.container {
+  max-width: 1140px; /* Ширший контейнер */
+  margin: 20px auto; /* Відступи зверху/знизу та центрування */
+  padding: 20px;
+  background-color: #fff; /* Біле тло для основного контенту */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+  color: var(--dark-color);
+  margin-top: 0; /* Прибираємо верхній відступ для заголовків у контейнері */
+  margin-bottom: 1rem;
+}
+h1 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+
+/* Базові стилі кнопок */
+.btn {
+   display: inline-block;
+   font-weight: 400;
+   text-align: center;
+   vertical-align: middle;
+   user-select: none;
+   background-color: transparent;
+   border: 1px solid transparent;
+   padding: 0.375rem 0.75rem;
+   font-size: 1rem;
+   line-height: 1.5;
+   border-radius: 0.25rem;
+   cursor: pointer;
+   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+   margin-right: 0.25rem; /* Невеликий відступ між кнопками */
+   margin-bottom: 0.25rem; /* Відступ знизу для перенесення */
+}
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+/* Маленькі кнопки */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+/* Кольори кнопок */
+.btn-primary { color: #fff; background-color: var(--primary-color); border-color: var(--primary-color); }
+.btn-primary:hover { background-color: #0056b3; border-color: #0056b3; }
+.btn-secondary { color: #fff; background-color: var(--secondary-color); border-color: var(--secondary-color); }
+.btn-secondary:hover { background-color: #5a6268; border-color: #545b62; }
+.btn-danger { color: #fff; background-color: var(--danger-color); border-color: var(--danger-color); }
+.btn-danger:hover { background-color: #c82333; border-color: #bd2130; }
+.btn-success { color: #fff; background-color: var(--success-color); border-color: var(--success-color); }
+.btn-success:hover { background-color: #218838; border-color: #1e7e34; }
+.btn-light { color: #212529; background-color: var(--light-color); border-color: #dae0e5; }
+.btn-light:hover { background-color: #e2e6ea; border-color: #dae0e5; }
+
+/* Стилі таблиці */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem; /* Додаємо відступ знизу */
+  background-color: var(--input-bg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color); /* Рамка навколо таблиці */
+}
+
+th, td {
+  border-bottom: 1px solid var(--border-color); /* Лінії тільки знизу */
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+}
+th {
+  background-color: var(--light-color);
+  font-weight: 600;
+  border-top: 1px solid var(--border-color); /* Верхня лінія для заголовків */
+  border-bottom-width: 2px; /* Товстіша лінія під заголовками */
+}
+/* Прибираємо рамку знизу у останнього рядка */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+/* Зебра для рядків */
+tbody tr:nth-child(odd) {
+  background-color: rgba(0,0,0,0.02);
+}
+tbody tr:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+/* Стилі для полів вводу та вибору */
+input[type="text"],
+input[type="email"],
+select {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: var(--input-bg);
+    background-clip: padding-box;
+    border: 1px solid var(--input-border-color);
+    appearance: none; /* Прибирає стандартний вигляд */
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    box-sizing: border-box; /* Важливо */
+}
+input:focus, select:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #86b7fe; /* Світло-синій при фокусі */
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25); /* Тінь при фокусі */
+}
+/* Додаткові стилі для select, щоб він був схожий на input */
+select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+/* Стилі для повідомлень про помилки валідації */
+.error-message {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: var(--danger-color);
+}
+/* Додатково: червона рамка для невалідних полів */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+    border-color: var(--danger-color);
+}
+input.ng-invalid.ng-touched:focus,
+select.ng-invalid.ng-touched:focus {
+    box-shadow: 0 0 0 0.25rem rgba(220,53,69,.25); /* Червона тінь при фокусі */
+}
