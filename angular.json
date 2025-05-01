@@ -38,6 +38,8 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "admin-panel",
+            "budgets": [],
               "budgets": [
                 {
                   "type": "initial",
